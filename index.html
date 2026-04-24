@@ -1,1 +1,198 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bulk URL Opener</title><style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;background:linear-gradient(135deg,#e2e8f0,#cbd5e1);color:#1e293b;overflow-x:hidden;transition:background .3s ease,color .3s ease}.dark body{background:linear-gradient(135deg,#1e293b,#334155);color:#e2e8f0}.container{background:rgba(255,255,255,.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);padding:1.5rem;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.15);width:90%;max-width:600px;text-align:center;transition:transform .3s ease,background .3s ease,border-color .3s ease}.dark .container{background:rgba(31,41,55,.85);border-color:rgba(255,255,255,.15)}.container:hover{transform:translateY(-3px)}h1{font-size:1.75rem;font-weight:600;margin-bottom:1.25rem;color:#1e293b}.dark h1{color:#e2e8f0}textarea{width:100%;height:180px;padding:10px;border:1px solid rgba(0,0,0,.15);border-radius:6px;background:rgba(255,255,255,.9);font-size:.875rem;resize:vertical;outline:none;color:#1e293b;transition:border-color .2s ease,box-shadow .2s ease,background .3s ease,color .3s ease}textarea:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.15)}.dark textarea{background:rgba(55,65,81,.9);border-color:rgba(255,255,255,.2);color:#e2e8f0}button{padding:10px 20px;background:#3b82f6;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.875rem;font-weight:500;text-transform:uppercase;transition:background .2s ease,transform .2s ease}button:hover{background:#2563eb}button:active{transform:scale(.97)}.dark button{background:#60a5fa}.dark button:hover{background:#3b82f6}#error{color:#ef4444;font-size:.8125rem;margin-top:.75rem;display:none}#error p+span{display:block;font-size:.75rem;opacity:.85}.theme-toggle{position:absolute;top:12px;right:12px;padding:8px;border:none;border-radius:50%;background:#6b7280;color:#fff;cursor:pointer;font-size:1rem;transition:background .2s ease}.theme-toggle:hover{background:#4b5563}.dark .theme-toggle{background:#94a3b8}.dark .theme-toggle:hover{background:#cbd5e1}@media (max-width:600px){.container{padding:1rem;margin:8px}h1{font-size:1.5rem}textarea{font-size:.8125rem}button{font-size:.8125rem;padding:8px 16px}.theme-toggle{top:8px;right:8px}}</style></head><body><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button><div class="container"><h1>Bulk URL Opener</h1><textarea id="urlList" placeholder="Enter URLs, one per line (e.g., https://example.com)" spellcheck="false"></textarea><button onclick="openUrls()">Open URLs</button><div id="error"></div></div><script defer>function isValidUrl(e){try{const t=new URL(e.startsWith("http://")||e.startsWith("https://")?e:`https://${e}`);return!!(t.protocol&&["http:","https:"].includes(t.protocol)&&t.hostname)}catch{return!1}}function toggleTheme(){const e=document.body;e.classList.toggle("dark");const t=e.classList.contains("dark"),n=t?"dark":"light";localStorage.setItem("theme",n),document.querySelector(".theme-toggle").textContent=t?"☀️":"🌙"}function openUrls(){const e=document.getElementById("urlList"),t=document.getElementById("error"),n=e.value.split("\n").map(e=>e.trim()).filter(e=>e),r=[];t.style.display="none",t.innerHTML="",n.length===0?(t.innerHTML="Please enter at least one URL.",t.style.display="block"):n.forEach((e,n)=>{let o=e;o.startsWith("http://")||o.startsWith("https://")||(o=`https://${e}`),isValidUrl(o)?setTimeout(()=>{window.open(o,"_blank")},50*n):r.push(`<p>Line ${n+1}: <span>"${e}" is invalid.</span></p>`)}),r.length>0&&(t.innerHTML=r.join(""),t.style.display="block")}"dark"===localStorage.getItem("theme")&&(document.body.classList.add("dark"),document.querySelector(".theme-toggle").textContent="☀️")</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bulk URL Opener</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            color: #1e293b;
+            overflow-x: hidden;
+            transition: background .3s ease, color .3s ease
+        }
+
+        .dark body {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: #e2e8f0
+        }
+
+        .container {
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, .2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            transition: transform .3s ease, background .3s ease, border-color .3s ease
+        }
+
+        .dark .container {
+            background: rgba(31, 41, 55, .85);
+            border-color: rgba(255, 255, 255, .15)
+        }
+
+        .container:hover {
+            transform: translateY(-3px)
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: #1e293b
+        }
+
+        .dark h1 {
+            color: #e2e8f0
+        }
+
+        textarea {
+            width: 100%;
+            height: 180px;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, .9);
+            font-size: .875rem;
+            resize: vertical;
+            outline: none;
+            color: #1e293b;
+            transition: border-color .2s ease, box-shadow .2s ease, background .3s ease, color .3s ease
+        }
+
+        textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, .15)
+        }
+
+        .dark textarea {
+            background: rgba(55, 65, 81, .9);
+            border-color: rgba(255, 255, 255, .2);
+            color: #e2e8f0
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: .875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: background .2s ease, transform .2s ease
+        }
+
+        button:hover {
+            background: #2563eb
+        }
+
+        button:active {
+            transform: scale(.97)
+        }
+
+        .dark button {
+            background: #60a5fa
+        }
+
+        .dark button:hover {
+            background: #3b82f6
+        }
+
+        #error {
+            color: #ef4444;
+            font-size: .8125rem;
+            margin-top: .75rem;
+            display: none
+        }
+
+        #error p+span {
+            display: block;
+            font-size: .75rem;
+            opacity: .85
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 8px;
+            border: none;
+            border-radius: 50%;
+            background: #6b7280;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background .2s ease
+        }
+
+        .theme-toggle:hover {
+            background: #4b5563
+        }
+
+        .dark .theme-toggle {
+            background: #94a3b8
+        }
+
+        .dark .theme-toggle:hover {
+            background: #cbd5e1
+        }
+
+        @media (max-width:600px) {
+            .container {
+                padding: 1rem;
+                margin: 8px
+            }
+
+            h1 {
+                font-size: 1.5rem
+            }
+
+            textarea {
+                font-size: .8125rem
+            }
+
+            button {
+                font-size: .8125rem;
+                padding: 8px 16px
+            }
+
+            .theme-toggle {
+                top: 8px;
+                right: 8px
+            }
+        }
+    </style>
+</head>
+
+<body><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button>
+    <div class="container">
+        <h1>Bulk URL Opener</h1><textarea id="urlList"
+            placeholder="Enter URLs, one per line (e.g., https://example.com)" spellcheck="false"></textarea><button
+            onclick="openUrls()">Open URLs</button>
+        <div id="error"></div>
+    </div>
+    <script
+        defer>function isValidUrl(e) { try { const t = new URL(e.startsWith("http://") || e.startsWith("https://") ? e : `https://${e}`); return !!(t.protocol && ["http:", "https:"].includes(t.protocol) && t.hostname) } catch { return !1 } } function toggleTheme() { const e = document.body; e.classList.toggle("dark"); const t = e.classList.contains("dark"), n = t ? "dark" : "light"; localStorage.setItem("theme", n), document.querySelector(".theme-toggle").textContent = t ? "☀️" : "🌙" } function openUrls() { const e = document.getElementById("urlList"), t = document.getElementById("error"), n = e.value.split("\n").map(e => e.trim()).filter(e => e), r = []; t.style.display = "none", t.innerHTML = "", n.length === 0 ? (t.innerHTML = "Please enter at least one URL.", t.style.display = "block") : n.forEach((e, n) => { let o = e; o.startsWith("http://") || o.startsWith("https://") || (o = `https://${e}`), isValidUrl(o) ? setTimeout(() => { window.open(o, "_blank") }, 50 * n) : r.push(`<p>Line ${n + 1}: <span>"${e}" is invalid.</span></p>`) }), r.length > 0 && (t.innerHTML = r.join(""), t.style.display = "block") } "dark" === localStorage.getItem("theme") && (document.body.classList.add("dark"), document.querySelector(".theme-toggle").textContent = "☀️")</script>
+</body>
+
+</html>
