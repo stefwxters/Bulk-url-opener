@@ -2,197 +2,435 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Bulk URL Opener</title>
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- PRIMARY SEO META TAGS -->
+  <title>Bulk URL Opener – Open Multiple Links at Once, Free & Instant</title>
+  <meta name="description" content="Open hundreds of URLs in one click with our free Bulk URL Opener. Paste links, click open, and every URL launches in a new tab instantly. No login, no install required.">
+  <meta name="keywords" content="bulk url opener, open multiple links at once, open multiple urls, batch url opener, mass link opener, open all links, url opener tool">
+  <meta name="author" content="Bulk URL Opener">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://stefwxters.github.io/"><!-- ← replace with your real URL -->
+
+  <!--OPEN GRAPH (Facebook, LinkedIn, WhatsApp …) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stefwxters.github.io/">
+  <meta property="og:title" content="Bulk URL Opener – Open Multiple Links at Once, Free & Instant">
+  <meta property="og:description" content="Paste your list of URLs and open them all in new tabs with a single click. 100% free, no sign-up needed.">
+  <meta property="og:image" content="https://stefwxters.github.io/og-image.png"><!-- 1200×630 px recommended -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Bulk URL Opener">
+
+  <!-- TWITTER / X CARD -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@stefwxters"><!-- ← replace or remove -->
+  <meta name="twitter:title" content="Bulk URL Opener – Open Multiple Links at Once">
+  <meta name="twitter:description" content="Paste your URLs, click open. Every link launches in a new tab instantly. Free, no login needed.">
+  <meta name="twitter:image" content="https://stefwxters.github.io/Bulk-url-opener/og-image.png">
+
+  <!-- STRUCTURED DATA  (JSON-LD / Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Bulk URL Opener",
+    "url": "https://stefwxters.github.io/Bulk-url-opener/",
+    "description": "Open multiple URLs at once by pasting a list of links and clicking a button. Each URL opens in a separate browser tab.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Open hundreds of URLs in one click",
+      "No registration required",
+      "Works on any browser",
+      "URL validation with error reporting",
+      "Pop-up blocker friendly staggered opening",
+      "100% private – runs locally in browser"
+    ]
+  }
+  </script>
+
+  <!-- BREADCRUMB (helps Google understand structure) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.YOUR-DOMAIN.com/"
+      }
+    ]
+  }
+  </script>
+
+  <!--FAQ SCHEMA  (can unlock FAQ rich results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I open multiple URLs at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paste your list of URLs into the text area (one URL per line) and click the 'Open URLs' button. Each link will open in a new browser tab automatically."
         }
-
-        body {
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-            color: #1e293b;
-            overflow-x: hidden;
-            transition: background .3s ease, color .3s ease
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Bulk URL Opener free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Bulk URL Opener is completely free and requires no account, registration, or software installation."
         }
-
-        .dark body {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            color: #e2e8f0
+      },
+      {
+        "@type": "Question",
+        "name": "How many URLs can I open at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no hard limit. You can paste as many URLs as you like. The tool opens them sequentially with a small delay to avoid browser pop-up blockers."
         }
-
-        .container {
-            background: rgba(255, 255, 255, .15);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, .2);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
-            width: 90%;
-            max-width: 600px;
-            text-align: center;
-            transition: transform .3s ease, background .3s ease, border-color .3s ease
+      },
+      {
+        "@type": "Question",
+        "name": "Does the tool work without internet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool itself runs entirely in your browser and needs no internet connection. However, the URLs you open obviously require an internet connection to load."
         }
+      }
+    ]
+  }
+  </script>
 
-        .dark .container {
-            background: rgba(31, 41, 55, .85);
-            border-color: rgba(255, 255, 255, .15)
-        }
+  <!-- Favicon -->
+  <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg"> -->
 
-        .container:hover {
-            transform: translateY(-3px)
-        }
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        h1 {
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-            color: #1e293b
-        }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+      color: #1e293b;
+      overflow-x: hidden;
+      padding: 2rem 0;
+    }
 
-        .dark h1 {
-            color: #e2e8f0
-        }
+    .container {
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.15);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      transition: transform .3s ease;
+    }
 
-        textarea {
-            width: 100%;
-            height: 180px;
-            padding: 10px;
-            border: 1px solid rgba(0, 0, 0, .15);
-            border-radius: 6px;
-            background: rgba(255, 255, 255, .9);
-            font-size: .875rem;
-            resize: vertical;
-            outline: none;
-            color: #1e293b;
-            transition: border-color .2s ease, box-shadow .2s ease, background .3s ease, color .3s ease
-        }
+    .container:hover { transform: translateY(-3px); }
 
-        textarea:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, .15)
-        }
+    h1 { font-size: 1.75rem; font-weight: 600; margin-bottom: .5rem; color: #1e293b; }
 
-        .dark textarea {
-            background: rgba(55, 65, 81, .9);
-            border-color: rgba(255, 255, 255, .2);
-            color: #e2e8f0
-        }
+    /* Visible tagline – crawlable keyword-rich text */
+    .tagline {
+      font-size: .875rem;
+      color: #475569;
+      margin-bottom: 1.25rem;
+    }
 
-        button {
-            padding: 10px 20px;
-            background: #3b82f6;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: .875rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            transition: background .2s ease, transform .2s ease
-        }
+    textarea {
+      width: 100%;
+      height: 180px;
+      padding: 10px;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 6px;
+      background: rgba(255,255,255,.9);
+      font-size: .875rem;
+      resize: vertical;
+      outline: none;
+      color: #1e293b;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
 
-        button:hover {
-            background: #2563eb
-        }
+    textarea:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
 
-        button:active {
-            transform: scale(.97)
-        }
+    button {
+      padding: 10px 20px;
+      background: #3b82f6;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: .875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      transition: background .2s ease, transform .2s ease;
+    }
 
-        .dark button {
-            background: #60a5fa
-        }
+    button:hover { background: #2563eb; }
+    button:active { transform: scale(.97); }
 
-        .dark button:hover {
-            background: #3b82f6
-        }
+    #error { color: #ef4444; font-size: .8125rem; margin-top: .75rem; display: none; }
+    #error p+span { display: block; font-size: .75rem; opacity: .85; }
 
-        #error {
-            color: #ef4444;
-            font-size: .8125rem;
-            margin-top: .75rem;
-            display: none
-        }
+    /* ── Shared section styles ── */
+    .why-choose,
+    .faq {
+      width: 90%;
+      max-width: 600px;
+      margin-top: 2rem;
+      text-align: left;
+    }
 
-        #error p+span {
-            display: block;
-            font-size: .75rem;
-            opacity: .85
-        }
+    .why-choose h2,
+    .faq h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #1e293b;
+    }
 
-        .theme-toggle {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            padding: 8px;
-            border: none;
-            border-radius: 50%;
-            background: #6b7280;
-            color: #fff;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background .2s ease
-        }
+    /* ── Why Choose cards ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
 
-        .theme-toggle:hover {
-            background: #4b5563
-        }
+    .why-card {
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 10px;
+      padding: 1rem 1rem .9rem;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
 
-        .dark .theme-toggle {
-            background: #94a3b8
-        }
+    .why-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,.1);
+    }
 
-        .dark .theme-toggle:hover {
-            background: #cbd5e1
-        }
+    .why-card .icon {
+      font-size: 1.4rem;
+      margin-bottom: .4rem;
+      display: block;
+    }
 
-        @media (max-width:600px) {
-            .container {
-                padding: 1rem;
-                margin: 8px
-            }
+    .why-card strong {
+      display: block;
+      font-size: .875rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: .25rem;
+    }
 
-            h1 {
-                font-size: 1.5rem
-            }
+    .why-card p {
+      font-size: .8rem;
+      color: #475569;
+      line-height: 1.5;
+      margin: 0;
+    }
 
-            textarea {
-                font-size: .8125rem
-            }
+    /* ── FAQ section – provides indexable content ── */
+    details {
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      margin-bottom: .5rem;
+    }
 
-            button {
-                font-size: .8125rem;
-                padding: 8px 16px
-            }
+    summary {
+      cursor: pointer;
+      font-weight: 500;
+      font-size: .9rem;
+      color: #1e293b;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-            .theme-toggle {
-                top: 8px;
-                right: 8px
-            }
-        }
-    </style>
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 1.1rem; transition: transform .2s; }
+    details[open] summary::after { transform: rotate(45deg); }
+
+    details p {
+      font-size: .85rem;
+      color: #475569;
+      margin-top: .6rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 1rem; margin: 8px; }
+      h1 { font-size: 1.5rem; }
+      textarea { font-size: .8125rem; }
+      button { font-size: .8125rem; padding: 8px 16px; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
-<body><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button>
+<body>
+  <main>
+    <!-- ── Tool ── -->
     <div class="container">
-        <h1>Bulk URL Opener</h1><textarea id="urlList"
-            placeholder="Enter URLs, one per line (e.g., https://example.com)" spellcheck="false"></textarea><button
-            onclick="openUrls()">Open URLs</button>
-        <div id="error"></div>
-    </div>
-    <script
-        defer>function isValidUrl(e) { try { const t = new URL(e.startsWith("http://") || e.startsWith("https://") ? e : `https://${e}`); return !!(t.protocol && ["http:", "https:"].includes(t.protocol) && t.hostname) } catch { return !1 } } function toggleTheme() { const e = document.body; e.classList.toggle("dark"); const t = e.classList.contains("dark"), n = t ? "dark" : "light"; localStorage.setItem("theme", n), document.querySelector(".theme-toggle").textContent = t ? "☀️" : "🌙" } function openUrls() { const e = document.getElementById("urlList"), t = document.getElementById("error"), n = e.value.split("\n").map(e => e.trim()).filter(e => e), r = []; t.style.display = "none", t.innerHTML = "", n.length === 0 ? (t.innerHTML = "Please enter at least one URL.", t.style.display = "block") : n.forEach((e, n) => { let o = e; o.startsWith("http://") || o.startsWith("https://") || (o = `https://${e}`), isValidUrl(o) ? setTimeout(() => { window.open(o, "_blank") }, 50 * n) : r.push(`<p>Line ${n + 1}: <span>"${e}" is invalid.</span></p>`) }), r.length > 0 && (t.innerHTML = r.join(""), t.style.display = "block") } "dark" === localStorage.getItem("theme") && (document.body.classList.add("dark"), document.querySelector(".theme-toggle").textContent = "☀️")</script>
-</body>
+      <h1>Bulk URL Opener</h1>
+      <p class="tagline">Open multiple links at once — paste, click, done.</p>
 
+      <label for="urlList" class="sr-only">Enter URLs to open, one per line</label>
+      <textarea
+        id="urlList"
+        name="urlList"
+        placeholder="Enter URLs, one per line&#10;e.g. https://example.com&#10;     https://google.com"
+        spellcheck="false"
+        aria-label="URL list – one URL per line"
+      ></textarea>
+
+      <button onclick="openUrls()" aria-label="Open all URLs in new tabs">Open URLs</button>
+      <div id="error" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- ── Why Choose section ── -->
+    <section class="why-choose" aria-label="Why choose this bulk URL opener">
+      <h2>Why Choose This Bulk URL Opener</h2>
+      <div class="why-grid">
+
+        <div class="why-card">
+          <span class="icon">⚡</span>
+          <strong>Open Hundreds of Links Instantly</strong>
+          <p>No more clicking one by one. Paste your entire list and launch every URL in seconds — ideal for researchers, marketers, and power users.</p>
+        </div>
+
+        <div class="why-card">
+          <span class="icon">🔒</span>
+          <strong>100% Private, No Server Involved</strong>
+          <p>Everything runs locally in your browser. Your URLs are never sent to any server, logged, or stored anywhere.</p>
+        </div>
+
+        <div class="why-card">
+          <span class="icon">🆓</span>
+          <strong>Completely Free, Forever</strong>
+          <p>No subscriptions, no hidden fees, no account needed. Just open the page and start using it — always free.</p>
+        </div>
+
+        <div class="why-card">
+          <span class="icon">✅</span>
+          <strong>Built-in URL Validation</strong>
+          <p>Invalid links are caught and flagged with a line number before anything opens, saving you from broken-tab frustration.</p>
+        </div>
+
+        <div class="why-card">
+          <span class="icon">🌐</span>
+          <strong>Works on Any Browser</strong>
+          <p>Chrome, Firefox, Safari, Edge — this tool works everywhere with zero plugins or extensions required.</p>
+        </div>
+
+        <div class="why-card">
+          <span class="icon">🛡️</span>
+          <strong>Pop-up Blocker Friendly</strong>
+          <p>URLs open with a staggered delay to stay under browser pop-up limits, so your tabs actually open reliably.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── FAQ – indexable content for SEO ── -->
+    <section class="faq" aria-label="Frequently asked questions">
+      <h2>Frequently Asked Questions</h2>
+
+      <details>
+        <summary>How do I open multiple URLs at once?</summary>
+        <p>Paste your list of URLs into the text area above (one URL per line) and click <strong>Open URLs</strong>. Each link opens in a new browser tab automatically.</p>
+      </details>
+
+      <details>
+        <summary>Is the Bulk URL Opener free?</summary>
+        <p>Yes — 100% free, no account, no registration, and nothing to install. It runs entirely in your browser.</p>
+      </details>
+
+      <details>
+        <summary>How many URLs can I open at once?</summary>
+        <p>There is no hard limit. URLs open sequentially with a short delay to avoid being blocked by your browser's pop-up blocker.</p>
+      </details>
+
+      <details>
+        <summary>Why is my browser blocking the new tabs?</summary>
+        <p>Some browsers block rapid tab openings. If tabs are being blocked, allow pop-ups for this site in your browser settings, then try again.</p>
+      </details>
+
+      <details>
+        <summary>Does it work offline?</summary>
+        <p>The tool itself runs offline — no server request is made. You still need an internet connection to load the URLs you open.</p>
+      </details>
+    </section>
+  </main>
+
+  <script defer>
+    function isValidUrl(e) {
+      try {
+        const t = new URL(e.startsWith("http://") || e.startsWith("https://") ? e : `https://${e}`);
+        return !!(t.protocol && ["http:","https:"].includes(t.protocol) && t.hostname);
+      } catch { return false; }
+    }
+
+    function openUrls() {
+      const e = document.getElementById("urlList");
+      const t = document.getElementById("error");
+      const n = e.value.split("\n").map(u => u.trim()).filter(u => u);
+      const r = [];
+
+      t.style.display = "none";
+      t.innerHTML = "";
+
+      if (n.length === 0) {
+        t.innerHTML = "Please enter at least one URL.";
+        t.style.display = "block";
+        return;
+      }
+
+      n.forEach((url, i) => {
+        let o = url;
+        if (!o.startsWith("http://") && !o.startsWith("https://")) o = `https://${url}`;
+        if (isValidUrl(o)) {
+          setTimeout(() => window.open(o, "_blank"), 50 * i);
+        } else {
+          r.push(`<p>Line ${i + 1}: <span>"${url}" is not a valid URL.</span></p>`);
+        }
+      });
+
+      if (r.length > 0) {
+        t.innerHTML = r.join("");
+        t.style.display = "block";
+      }
+    }
+  </script>
+</body>
 </html>
